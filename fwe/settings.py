@@ -14,9 +14,6 @@ BOT_NAME = 'fwe'
 SPIDER_MODULES = ['fwe.spiders']
 NEWSPIDER_MODULE = 'fwe.spiders'
 
-# Database
-DATA_DIR = './data/'
-
 # Duplicate filter
 DUPEFILTER_CLASS = 'scrapy.dupefilters.RFPDupeFilter'
 

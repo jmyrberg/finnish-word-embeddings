@@ -6,11 +6,14 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 import json
+import os
 
 
 class FwePipeline(object):
 
     def open_spider(self, spider):
+        if not os.path.exists('./data/feed'):
+            os.makedirs('./data/feed')
         self.file = open('./data/feed/%s.jl' % spider.name, 'a', encoding='utf-8')
 
     def close_spider(self, spider):

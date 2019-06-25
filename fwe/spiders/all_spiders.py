@@ -6,18 +6,17 @@ from scrapy.linkextractors import LinkExtractor
 
 
 
-def extract_text(resp):
+def extract_text(resp, min_tokens=3):
     selector = '//body/descendant-or-self::*[not(self::script)]/text()'
-    css_chars = ['{','}',';','-']
     texts = resp.selector.xpath(selector).extract()
     ret = []
     for text in texts:
-        text = text.strip()
-        non_css_cnt = sum([1 for c in text if c not in css_chars])
-        if ((len(text) > 0) 
-            and (non_css_cnt / len(text) > 0.99)
-            and (len(text.split()) > 1)):
-            ret.append(text)
+        css_count = (text.count(';') + text.count(':') + text.count('#')
+                     + text.count('{') + text.count('}'))
+        if ((len(text) > 0)
+            and (len(text.split()) >= min_tokens)
+            and (css_count < 4)):
+            ret.append(text.strip())
     return ret
 
 
@@ -65,7 +64,8 @@ class IltaSanomatSpider(BaseSpider):
         'ravit.is.fi'
     )
     deny = (
-        '.*/tag/.*'
+        '.*/tag/.*',
+        '.*/haku/.*'
     )
 
 
@@ -126,3 +126,14 @@ class Vauva(BaseSpider):
         '.*quote\=.*'
     )
 
+
+class Demi(BaseSpider):
+    name = 'demi'
+    start_urls = ['https://www.demi.fi/keskustelut']
+    allowed_domains = ['demi.fi']
+    allow = (
+        '.*/keskustelut/.*'
+    )
+    custom_settings = {
+        'JOBDIR': './data/crawl/demi'
+    }
