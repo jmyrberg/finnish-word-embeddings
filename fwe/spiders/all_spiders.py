@@ -137,3 +137,47 @@ class Demi(BaseSpider):
     custom_settings = {
         'JOBDIR': './data/crawl/demi'
     }
+
+
+class Tori(BaseSpider):
+    name = 'tori'
+    start_urls = ['https://www.tori.fi']
+    allowed_domains = ['tori.fi']
+    allow = (
+    )
+    custom_settings = {
+        'JOBDIR': './data/crawl/tori'
+    }
+
+class Kauppalehti(BaseSpider):  # NOT WORKING!
+    name = 'kauppalehti'
+    start_urls = ['https://www.kauppalehti.fi']
+    allowed_domains = ['kauppalehti.fi']
+    allow = (
+    )
+    custom_settings = {
+        'JOBDIR': './data/crawl/kauppalehti'
+    }
+
+class Kotikokki(BaseSpider):
+    name = 'kotikokki'
+    start_urls = ['https://www.kotikokki.net']
+    allowed_domains = ['kotikokki.net']
+    allow = (
+    )
+    deny = (
+        '.*//.*'
+    )
+    custom_settings = {
+        'JOBDIR': './data/crawl/kotikokki'
+    }
+
+class Oikotie(BaseSpider): # NOT WORKING!
+    name = 'oikotie'
+    start_urls = ['https://www.oikotie.fi']
+    allowed_domains = ['oikotie.fi']
+    allow = (
+    )
+    custom_settings = {
+        'JOBDIR': './data/crawl/oikotie'
+    }
