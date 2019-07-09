@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for fwe project
+# Scrapy settings for crawling project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,16 +9,22 @@
 #     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'fwe'
+from pathlib import Path
 
-SPIDER_MODULES = ['fwe.spiders']
-NEWSPIDER_MODULE = 'fwe.spiders'
+
+BOT_NAME = 'finnish-word-embeddings'
+
+SPIDER_MODULES = ['crawling.spiders']
+NEWSPIDER_MODULE = 'crawling.spiders'
+
+# Data director
+DATA_DIR = Path(__file__).absolute().parent.parent / 'data'
 
 # Duplicate filter
 DUPEFILTER_CLASS = 'scrapy.dupefilters.RFPDupeFilter'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'fwe (+http://www.yourdomain.com)'
+#USER_AGENT = 'crawling (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -49,13 +55,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'fwe.middlewares.FweSpiderMiddleware': 543,
+#    'crawling.middlewares.crawlingSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'fwe.middlewares.FweDownloaderMiddleware': 543,
+#    'crawling.middlewares.crawlingDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -67,7 +73,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'fwe.pipelines.FwePipeline': 300,
+    'crawling.pipelines.CrawlingPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
