@@ -1,6 +1,6 @@
 # Finnish Word Embeddings
 
-**finnish-word-embeddings** aims to collect [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) for [Finnish language](https://en.wikipedia.org/wiki/Finnish_language) in one place. This repository contains both word embeddings trained by the author, but also links to Finnish word embeddings provided by others.
+This repository aims to collect [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) for [Finnish language](https://en.wikipedia.org/wiki/Finnish_language) in one place. This repository contains both word embeddings trained by the author, but also links to Finnish word embeddings provided by others.
 
 ## List of available embeddings
 |   Source																|   Model		|   Dimension	|  	Trained on								|	Download link 	|
