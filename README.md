@@ -1,20 +1,18 @@
 # Finnish Word Embeddings
 
-This repository aims to collect [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) for [Finnish language](https://en.wikipedia.org/wiki/Finnish_language) in one place, including embeddings trained by the author, and also links to Finnish word embeddings provided by others.
-
 ![Finnish words](picture.JPG "Finnish words")
 
-
+This repository aims to collect [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) for [Finnish language](https://en.wikipedia.org/wiki/Finnish_language) in one place, including embeddings trained by the author, and also links to Finnish word embeddings available elsewhere.
 
 ## List of available embeddings
 |   Source																|   Model		|   Dimension	|  	Trained on								|	Download link 	|
 |---																	|---			|---			|---										|---			  	|
 |   [Facebook](https://fasttext.cc/docs/en/crawl-vectors.html)			|   FastText	|	300			| 	Wikipedia and CommonCrawl				|		[Binary](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.fi.300.bin.gz) / [Text](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.fi.300.vec.gz) |
 |   [Facebook](https://fasttext.cc/docs/en/pretrained-vectors.html)		|   FastText	|	300			| 	Wikipedia								|		[Binary + Text](https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.fi.zip) / [Text](https://dl.fbaipublicfiles.com/fasttext/vectors-wiki/wiki.fi.vec)	|
-|   [Turku NLP](https://turkunlp.org/finnish_nlp.html)					|  	Word2Vec	|	Unknown 	|   Finnish Internet Parsebank (4B tokens)	|	[Binary](http://dl.turkunlp.org/finnish-embeddings/finnish_4B_parsebank_skgram.bin)				|
+|   [Turku NLP](https://turkunlp.org/finnish_nlp.html)					|  	Word2Vec	|	Unknown 	|   Finnish Internet Parsebank          	|	[Binary](http://dl.turkunlp.org/finnish-embeddings/finnish_4B_parsebank_skgram.bin)				|
 |   [Turku NLP](https://turkunlp.org/finnish_nlp.html)					|  	Word2Vec	|	Unknown 	|   Suomi24									|	[Binary](http://dl.turkunlp.org/finnish-embeddings/finnish_s24_skgram.bin)				|
 |   [Turku NLP](https://turkunlp.org/finnish_nlp.html)					|  	Word2Vec	|	Unknown 	|   Suomi24 with lemmatization				|	[Binary](http://dl.turkunlp.org/finnish-embeddings/finnish_s24_skgram_lemmas.bin)				|
-|   This repository														|   			|   			|   										|					|
+|   This repository														|   Word2Vec / FastText			|   100 / 300			|   Crawled from popular Finnish websites, such as IL, IS, Vauva, Kotikokki, etc. Please see the spiders [here](crawling/spiders/all_spiders.py) for more info	|	[Binary from Kaggle datasets](https://www.kaggle.com/jmyrberg/finnish-word-embeddings) (only viable free option for now, let me know if you can host :)	|
 
 ## Example usage of word embeddings
 
