@@ -12,7 +12,7 @@ This repository aims to collect [word embeddings](https://en.wikipedia.org/wiki/
 |   [Turku NLP](https://turkunlp.org/finnish_nlp.html)					|  	Word2Vec	|	Unknown 	|   Finnish Internet Parsebank          	|	[Binary](http://dl.turkunlp.org/finnish-embeddings/finnish_4B_parsebank_skgram.bin)				|
 |   [Turku NLP](https://turkunlp.org/finnish_nlp.html)					|  	Word2Vec	|	Unknown 	|   Suomi24									|	[Binary](http://dl.turkunlp.org/finnish-embeddings/finnish_s24_skgram.bin)				|
 |   [Turku NLP](https://turkunlp.org/finnish_nlp.html)					|  	Word2Vec	|	Unknown 	|   Suomi24 with lemmatization				|	[Binary](http://dl.turkunlp.org/finnish-embeddings/finnish_s24_skgram_lemmas.bin)				|
-|   This repository														|   Word2Vec / FastText			|   100 / 300			|   Crawled from popular Finnish websites, such as IL, IS, Vauva, Kotikokki, etc. Please see the spiders [here](crawling/spiders/all_spiders.py) for more info	|	[Binary from Kaggle datasets](https://www.kaggle.com/jmyrberg/finnish-word-embeddings) (only viable free option for now, let me know if you can host :)	|
+|   This repository														|   Word2Vec / FastText			|   100 / 300			|   Crawled from popular Finnish websites ([details](crawling/spiders/all_spiders.py))	|	[Binary files from Kaggle datasets](https://www.kaggle.com/jmyrberg/finnish-word-embeddings) (only viable free option for now, let me know if you are willing to host these:)	|
 
 ## Example usage of word embeddings
 

@@ -1,10 +1,11 @@
 """Module for helper functions."""
 
+
 import logging
 
 
 def get_logger():
-    """Get logger."""
+    """Get logger with basic setup."""
     logger = logging.getLogger('')
     logger.setLevel(logging.INFO)
     fh = logging.FileHandler('run.log')

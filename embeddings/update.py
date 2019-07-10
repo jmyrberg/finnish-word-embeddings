@@ -1,5 +1,6 @@
 """Module for updating all word embeddings with the latest crawled data."""
 
+
 from preprocess import preprocess_all_files
 from train import create_all_embeddings
 
@@ -19,7 +20,6 @@ def main():
         out_dir='./data/embeddings'
     )
     
-
 
 if __name__ == '__main__':
     main()

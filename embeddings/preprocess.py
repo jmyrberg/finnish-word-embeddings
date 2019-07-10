@@ -19,6 +19,7 @@ import numpy as np
 import pandas as pd
 
 from joblib import Parallel, delayed
+from nltk.tokenize import TweetTokenizer
 
 
 def grouper(iterable, n, fillvalue=None):
@@ -218,7 +219,6 @@ def preprocess_all_files(in_filedir='./data/feed/',
     
     # Tokenizers
     if tokenizer.lower().strip() == 'tweet':
-        from nltk.tokenize import TweetTokenizer
         tokenizer = TweetTokenizer(strip_handles=True, reduce_len=True, 
                                    preserve_case=True)
     else:

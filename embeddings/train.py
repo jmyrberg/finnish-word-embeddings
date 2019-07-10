@@ -159,5 +159,5 @@ def create_all_embeddings(sentlines_dir='./data/processed',
     logger.info(f'All done in {time.perf_counter() - start_time:.0f} seconds!')
 
 
-if __name__ == '__main__':
-    create_all_embeddings()
+#if __name__ == '__main__':
+#    create_all_embeddings()
