@@ -62,7 +62,7 @@ def preprocess_lines(lines, tokenizer, sent_tokenizer, min_sent_len=5):
         for sent in sent_tokenizer.tokenize(doc):
             sent_tokens = []
             
-            # Additional RE
+            # Remove URLs
             sent = url_re.sub('<URL>', sent)
             
             # Tokenization
@@ -70,17 +70,22 @@ def preprocess_lines(lines, tokenizer, sent_tokenizer, min_sent_len=5):
 
             # Cleaning up
             for token in tokens:
+                
+                # Normal tokens
                 normal_chars = filter_re.sub('', token)
-                other_chars = filter_re.findall(token)
-                        
-                enough_normal_chars = len(normal_chars) > 0
-                if enough_normal_chars:
+                n_token = len(token)
+                n_normal_chars = len(normal_chars)
+                pct_normal_chars = n_normal_chars / n_token
+                if n_normal_chars > 0 and pct_normal_chars > 0.75:
                     sent_tokens.append(token)
                     continue
                     
+                # Emojis
+                other_chars = filter_re.findall(token)
                 only_one_other = len(other_chars) == 1
-                others_in_punct = any([c in string.punctuation for c in other_chars])
-                if only_one_other and not others_in_punct and len(token) > 1:
+                others_in_punct = any([c in string.punctuation 
+                                       for c in other_chars])
+                if only_one_other and not others_in_punct:
                     sent_tokens.append(token)
             
             # Add to sentences
