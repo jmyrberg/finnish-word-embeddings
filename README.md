@@ -1,10 +1,11 @@
 # Finnish Word Embeddings
 
+This repository contains links to [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) for [Finnish language](https://en.wikipedia.org/wiki/Finnish_language), including code for training your own embeddings. Word embeddings represent words as low dimensional numerical vectors, which are helpful in various [NLP](https://en.wikipedia.org/wiki/Natural_language_processing) applications, such as building chatbots, calculating semantic similarities or detecting fake news.
+
 ![Finnish words](picture.JPG "Finnish words")
 
-This repository aims to collect [word embeddings](https://en.wikipedia.org/wiki/Word_embedding) for [Finnish language](https://en.wikipedia.org/wiki/Finnish_language) in one place, including embeddings trained by the author, and also links to Finnish word embeddings available elsewhere.
-
 ## List of available embeddings
+
 |   Source																|   Model		|   Dimension	|  	Trained on								|	Download link 	|
 |---																	|---			|---			|---										|---			  	|
 |   [Facebook](https://fasttext.cc/docs/en/crawl-vectors.html)			|   FastText	|	300			| 	Wikipedia and CommonCrawl				|		[Binary](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.fi.300.bin.gz) / [Text](https://dl.fbaipublicfiles.com/fasttext/vectors-crawl/cc.fi.300.vec.gz) |
@@ -17,12 +18,12 @@ This repository aims to collect [word embeddings](https://en.wikipedia.org/wiki/
 ## Example usage of word embeddings
 
 ```python
-# Word embeddings in word2vec-format can easily be loaded with gensim
+# Word embeddings in word2vec-format can easily be loaded and queried with gensim
 # See https://radimrehurek.com/gensim/models/keyedvectors.html for reference
 from gensim.models.keyedvectors import KeyedVectors
 
 # Load vectors into memory (bin in filename means binary=True)
-embeddings_path = 'fasttext.fi.all.1045M.100d.bin.gz'
+embeddings_path = './data/embeddings/fasttext.fi.all.1045M.100d.bin.gz'
 kv = KeyedVectors.load_word2vec_format(embeddings_path, binary=True)
 
 # Find most similar word to 'koira'
@@ -44,13 +45,13 @@ Three steps are required:
 If you follow the steps above without modifying any code, you should be able to reproduce the custom word embeddings provided in this repository. The provided code should also automatically create the folder structure under *./data/\** as follows:
 
 * *crawl*: State of the spider to avoid duplicate scrapes
-* *feed*: Crawled material with JSON line files named like *<spiderName>.jl*
+* *feed*: Crawled material with JSON line files named like *\<spiderName\>.jl*
 * *processed*: Preprocessed crawled material in sentence line files like *all.sl*
-* *embeddings*: Trained word embeddings named like *<modelName>.fi.<sentenceLineFilename>.<numberOfTokensTrainedOn>.<embeddingsDimension>.<format>.gz*
+* *embeddings*: Trained word embeddings named like *\<modelName\>.fi.\<sentenceLineFilename\>.\<numberOfTokensTrainedOn\>.\<embeddingsDimension\>.\<format\>.gz*
 
 ## Contributing
 
-If you want to add, modify or remove something in the list of word embeddings or code, please feel free to make a pull request or contact me.
+If you want to add, modify or remove something in the list of word embeddings or code, please feel free to make a pull request, file an issue, or contact me.
 
 ---
 Jesse Myrberg (jesse.myrberg@gmail.com)
