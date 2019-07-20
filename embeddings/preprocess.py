@@ -22,6 +22,9 @@ from joblib import Parallel, delayed
 from nltk.tokenize import TweetTokenizer
 
 
+PUNCT_CHARS = string.punctuation + '´”…'
+
+
 def grouper(iterable, n, fillvalue=None):
     """Return iterable in chunks of certain length.
     
@@ -84,8 +87,7 @@ def preprocess_lines(lines, tokenizer, sent_tokenizer, min_sent_len=5):
                 # Emojis
                 other_chars = filter_re.findall(token)
                 only_one_other = len(other_chars) == 1
-                others_in_punct = any([c in string.punctuation 
-                                       for c in other_chars])
+                others_in_punct = any([c in PUNCT_CHARS for c in other_chars])
                 if only_one_other and not others_in_punct:
                     sent_tokens.append(token)
             
@@ -255,3 +257,4 @@ def preprocess_all_files(in_filedir='./data/feed/',
 
 #if __name__ == '__main__':
 #    preprocess_all_files()
+    

@@ -50,13 +50,16 @@ def gzip_file(filepath, remove_original=True):
         os.remove(filepath)
 
 
-def save_word_vectors(sentlines_path, out_dir, model, compress=True):
+def save_word_vectors(sentlines_path, out_dir, model,
+                      save_vec=False, compress=True):
     """Save word vectors of a gensim model into a directory.
     
     Args:
         sentlines_path (str): Filepath of input sentence lines file.
         out_dir (str): Directory to save word embeddings into.
         model (gensim.models.*): Trained gensim model.
+        save_vec (bool, optional): Whether to save vectors in text format.
+            Defaults to False.
         compress (bool, optional): Whether to Gzip the output or not. Defaults
             to True.
     """
@@ -67,14 +70,16 @@ def save_word_vectors(sentlines_path, out_dir, model, compress=True):
      out_text_filepath) = get_out_filepaths(sentlines_path, out_dir,
                                             model_name, size, n_tokens)
     model.wv.save_word2vec_format(out_binary_filepath, binary=True)
-    model.wv.save_word2vec_format(out_text_filepath, binary=False)
+    if save_vec:
+        model.wv.save_word2vec_format(out_text_filepath, binary=False)
 
     if compress:
         gzip_file(out_binary_filepath)
-        gzip_file(out_text_filepath)
+        if save_vec:
+            gzip_file(out_text_filepath)
 
 
-def create_word2vec_embeddings(sentlines_path, out_dir, size=100):
+def create_word2vec_embeddings(sentlines_path, out_dir, size=300):
     """Train Word2Vec word embeddings.
     
     Args:
@@ -100,7 +105,7 @@ def create_word2vec_embeddings(sentlines_path, out_dir, size=100):
     save_word_vectors(sentlines_path, out_dir, w2v)
     
 
-def create_fasttext_embeddings(sentlines_path, out_dir, size=100):
+def create_fasttext_embeddings(sentlines_path, out_dir, size=300):
     """Train FastText word embeddings.
     
     Args:
@@ -147,10 +152,6 @@ def create_all_embeddings(sentlines_dir='./data/processed',
     # Train word embeddings
     for filepath in sentline_filepaths:
         logger.info(f'Creating embeddings for sentlines {filepath}...')
-        
-        # 100d
-        create_word2vec_embeddings(filepath, out_dir, size=100)
-        create_fasttext_embeddings(filepath, out_dir, size=100)
 
         # 300d
         create_word2vec_embeddings(filepath, out_dir, size=300)
