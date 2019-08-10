@@ -8,7 +8,7 @@ from train import create_all_embeddings
 def main():
     preprocess_all_files(
         in_filedir='./data/feed/',
-        out_filepath='./data/processed/all2.sl',
+        out_filepath='./data/processed/all.sl',
         lines_per_chunk=30000,
         create_uncased=True,
         min_sent_len=5,
